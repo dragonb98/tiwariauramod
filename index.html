@@ -50,6 +50,11 @@ src="https://www.facebook.com/tr?id=1671338107899159&ev=PageView&noscript=1"
     }
     lastAccepted = now;
     opening = true;
+    // Fire Subscribe only after a genuine user click on the Telegram join button.
+    // This measures the button click, not a confirmed Telegram channel join.
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Subscribe');
+    }
     join.setAttribute('aria-disabled', 'true');
     join.style.pointerEvents = 'none';
     window.setTimeout(function () {
